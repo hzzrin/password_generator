@@ -1,36 +1,40 @@
-
-var charRange = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklnmopqrstuvwxyz", "0123456789", "~!@#$%^&*()-_=+"];
-
-var userInput = [];
-
-var password = "";
+// Define variables 
 
 var generateBtn = document.querySelector("#generate");
 
+var length;
+var upperconfirm;
+var lowerConfirm;
+var numberConfirm;
+var specialConfirm;
+var userInput;
+
+
+// Setting lowercases and uppercases using string toUpperCase () method. 
+
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+var Upperinput = [];
+var toUpper = function (make) {
+  return make.toUpperCase();
+};
+
+upperCase = lowerCase.map(toUpper);
+
+
+// Setting numbers and special characters  
+var numberCase = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var specialCase = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+
+// Write password to the #password input
 function writePassword() {
-    password = generatePassword();
-    var passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
+  passwordText.value = password;
+
 }
 
-function generatePassword() {
-    var charLength = Number(prompt("How many characters would you like your password to be? (8-128)"));
-    while ((charLength < 8 || charLength > 128) || Number.isInteger(charLength) === false) {
-        charLength = Number(prompt("Length must be 8-128 characters!"));
-    }
-
-    var upperCase = confirm("Click OK if you would like to include uppercase characters");
-    var lowerCase = confirm("Click OK if you would like to include lowercase characters");
-    var numberCase = confirm("Click OK if you would like to include numeric characters");
-    var specialCase = confirm("Click OK if you would like to include special characters (~!@#$%^&*()-_=+)");
-    while (!upperCase && !lowerCase && !numberCase && !specialCase) {
-      alert("You must select at least one character type!");
-      upperCase = confirm("Click OK if you would like to include uppercase characters");
-      lowerCase = confirm("Click OK if you would like to include lowercase characters");
-      numeberCase = confirm("Click OK if you would like to include numeric characters");
-      specialCase = confirm("Click OK if you would like to include special characters (~!@#$%^&*()-_=+)");
-    }
-}
-
+// Adding event listener to generate button 
 generateBtn.addEventListener("click", writePassword);
+
