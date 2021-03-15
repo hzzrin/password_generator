@@ -17,7 +17,7 @@ var specialCase = ["!", "@", "#", "$", "%", "&", "^", "'", "(", ")", "*", "+", "
                     " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
 /* Setting values for lowercases and uppercases using string toUpperCase () method. 
-this function allows the lowercase letters to be replaced with uppercase letters when needed */
+this function allows the lowercase letters to be replaced with uppercase letters when needed*/
 
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", 
                   "t", "u", "v", "w", "x", "y", "z"];
