@@ -138,17 +138,17 @@ function generatePassword () {
     userInput = specialCase;
   }
 
-  // Empty variable for password input 
+  // Setting empty variable for password input 
 
   var passwordInput = [];
 
-  // Loop for random selection 
+  // Setting Loop for random selection 
   for (var i = 0; i < charLength; i++) {
     var allCharacters = userInput[Math.floor(Math.random() * userInput.length)];
     passwordInput.push(allCharacters);
   }
 
-  // output of the password 
+  // Setting output of the password 
 
   var password = passwordInput.join("");
   return password;
