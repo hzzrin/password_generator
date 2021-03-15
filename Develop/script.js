@@ -1,47 +1,68 @@
-// Assignment Code
+
+var charRange = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklnmopqrstuvwxyz", "0123456789", "~!@#$%^&*()-_=+"];
+
+var userInput = [];
+
+var password = "";
+
 var generateBtn = document.querySelector("#generate");
 
-// Prompts that come up after you click generate password
-while (isNaN(length) || length < 8 || length > 128) length = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
-
-var uppers = confirm("Would you like to use uppercase letters?");
-var lowers = confirm("Would you like to use lowercase letters?");
-var numbers = confirm("Would you like to use numbers?");
-var symbols = confirm("Would you like to use special characters?");
-
-function getUserInputs(){
-  //first check the values, and force the user to re-choose character types if they're invalid.
-  while (!uppers && !lowers && !numbers && !symbols) {
-    alert("You must select at least one character type!");
-    uppers = confirm("Would you like to use uppercase letters?");
-    lowers = confirm("Would you like to use lowercase letters?");
-    numbers = confirm("Would you like to use numbers?");
-    symbols = confirm("Would you like to use special characters?");
-  }
-  //then once that's all done, we can call buildPassword!
-  writePassword()
-}
-getUserInputs() //runs the function here. We can run it again later if we ever need to.
-
-// Write password to the #password input
 function writePassword() {
- var password = generatePassword();
- var passwordText = document.querySelector("#password");
- passwordText.value = password;
+    password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
 }
-// Add event listener to generate button
+
+function generatePassword() {
+    var charLength = 0
+    while ((charLength < 8 || charLength > 128) || Number.isInteger(charLength) === false) {
+        charLength = parseInt(prompt("How many characters would you like your password to be? (8-128)"));
+    }
+
+    var upperCase = false
+    var lowerCase = false
+    var numericalCase = false
+    var specialCase = false
+
+    while (!upperCase && !lowerCase && !numericalCase && !specialCase) {
+
+        upperCase = confirm("Click OK if you would like to include uppercase characters");
+        lowerCase = confirm("Click OK if you would like to include lowercase characters");
+        numericalCase = confirm("Click OK if you would like to include numeric characters");
+        specialCase = confirm("Click OK if you would like to include special characters (~!@#$%^&*()-_=+)");
+    }
+
+    if (upperCase) {
+        userInput.push(charRange[0]);
+    }
+
+    if (lowerCase) {
+        userInput.push(charRange[1])
+    }
+
+    if (numericalCase) {
+        userInput.push(charRange[2])
+    }
+
+    if (specialCase) {
+        userInput.push(charRange[3])
+    }
+
+    var password = "";
+
+    userInput = userInput.join("").split("");
+
+
+    for (var i = 0; i < charLength; i++) {
+
+        var index = (Math.floor(Math.random() * userInput.length));
+        password = password + userInput[index]
+    }
+
+    return password
+
+}
+
+
 generateBtn.addEventListener("click", writePassword);
-
-function buildPassword() { //I renamed this because we already HAVE a writePassword function.
- var password = "";
- var allowed = {};
-
- //the four lines below aren't quite functioning as you want them to.
- //make sure "random" is a function you've defined if you're going to call random(somestuff)!
- if (uppers) password += rando(allowed.uppers = "QWERTYUIOPASDFGHJKLZXCVBNM");
- if (lowers) password += rando(allowed.lowers = "qwertyuiopasdfghjklzxcvbnm");
- if (numbers) password += rando(allowed.numbers = "1234567890");
- if (symbols) password += rando(allowed.symbols = "!@#$%^&*(){}[]=<>/,.");
- for (var i = password.length; i < length; i++) password += random(random(allowed).value);
- document.getElementById("password").value = randoSequence(password).join("");
-};
