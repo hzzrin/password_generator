@@ -17,7 +17,7 @@ var specialCase = ["!", "@", "#", "$", "%", "&", "^", "'", "(", ")", "*", "+", "
                     " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
 /* Setting values for lowercases and uppercases using string toUpperCase () method. 
-this function allows the lowercase letters to be replaced with uppercase letters when needed*/
+this method will allow the lowercase letters to be replaced with uppercase letters when needed*/
 
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", 
                   "t", "u", "v", "w", "x", "y", "z"];
@@ -70,6 +70,7 @@ function generatePassword () {
   } 
 
 
+  // Using concat () method to merge multiple arrays 
   // Writing condition if the user chooses four options 
 
   else if (upperConfirm && lowerConfirm && numberConfirm && specialConfirm) {
